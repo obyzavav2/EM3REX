@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EM3REX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 20% 30%, #1a1a1a 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, #2a2a2a 0%, transparent 50%),
+                #000000;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .logo {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .logo h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 5px;
+            color: white;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 0 20px rgba(255, 255, 255, 0.3),
+                0 0 30px rgba(255, 255, 255, 0.1);
+            animation: glitch 5s infinite;
+            position: relative;
+        }
+
+        @keyframes glitch {
+            0%, 100% {
+                transform: translate(0);
+                text-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.5),
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 30px rgba(255, 255, 255, 0.1);
+            }
+            2%, 64% {
+                transform: translate(2px, 0) skew(1deg);
+                text-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.5),
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 30px rgba(255, 255, 255, 0.1),
+                    5px 0 0 rgba(255, 0, 0, 0.2);
+            }
+            4%, 60% {
+                transform: translate(-2px, 0) skew(0deg);
+                text-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.5),
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 30px rgba(255, 255, 255, 0.1),
+                    -5px 0 0 rgba(0, 255, 0, 0.2);
+            }
+            62% {
+                transform: translate(0, 0) skew(5deg);
+                text-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.5),
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 30px rgba(255, 255, 255, 0.1),
+                    0 0 50px rgba(0, 0, 255, 0.2);
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        /* Кнопка Telegram */
+        .telegram-link {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid white;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .telegram-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .telegram-link:hover::before {
+            left: 100%;
+        }
+
+        .telegram-link:hover {
+            background: white;
+            color: black;
+            box-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.3),
+                inset 0 0 10px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+ 
+        .youtube-section {
+            width: 100%;
+            margin-bottom: 3rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .youtube-section h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .youtube-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: white;
+            animation: linePulse 2s infinite;
+        }
+
+        @keyframes linePulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .video-container:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+            transform: translateY(-5px);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            font-size: 4rem;
+            color: white;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .bot-info {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bot-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .bot-info:hover::before {
+            transform: translateX(100%);
+        }
+
+        .bot-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .bot-username {
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .service-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.8s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .service-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            animation: bounce 3s infinite;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .service-item:nth-child(1) { animation-delay: 0.2s; }
+        .service-item:nth-child(2) { animation-delay: 0.4s; }
+        .service-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .main-service {
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto 3rem;
+            animation: highlightPulse 4s infinite;
+        }
+
+        .main-service-item {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.8s ease;
+        }
+
+        .main-service-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        .main-service-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .main-service-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: bounce 3s infinite, rotate 10s infinite linear;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+        }
+
+        .main-service-item h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .main-service-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% { 
+                transform: translateY(0);
+            }
+            50% { 
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.05); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: auto;
+            padding: 2rem 0;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotateIn 1s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            transform: scale(1);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .youtube:hover {
+            color: #ff0000;
+            border-color: #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .telegram:hover {
+            color: #0088cc;
+            border-color: #0088cc;
+            box-shadow: 0 0 15px rgba(0, 136, 204, 0.3);
+        }
+
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotate(-180deg) scale(0.5); }
+            to { opacity: 1; transform: rotate(0) scale(1); }
+        }
+
+        .social-link:nth-child(1) { animation-delay: 1s; }
+        .social-link:nth-child(2) { animation-delay: 1.2s; }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite linear;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 3.5rem;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+            
+            .youtube-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .main-service {
+                max-width: 100%;
+            }
+            
+            .main-service-item {
+                padding: 2rem 1.5rem;
+            }
+            
+            .main-service-icon {
+                font-size: 3rem;
+            }
+            
+            .main-service-item h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .telegram-link {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .main-service-item {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="logo">
+            <h1>EM3REX</h1>
+        </div>
+        
+        <div class="content">
+            <a href="https://t.me/emerbeats_exe" class="telegram-link" target="_blank">
+                Перейти в Telegram канал
+            </a>
+            
+            <div class="youtube-section">
+                <h2>Последнее видео</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/8qOOEt0Q-oQ" 
+                            title="EM3REX YouTube Video" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    <div class="video-overlay">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bot-info">
+                <p>Бот с предложкой / услуги:</p>
+                <p class="bot-username">Bot@EmerBeatsBot</p>
+            </div>
+            
+            <div class="services">
+                <div class="service-item">
+                    <div class="service-icon">🎁</div>
+                    <h3>Скачать плагины</h3>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">🔥</div>
+                    <h3>Предложка мемов для канала</h3>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">🍒</div>
+                    <h3>Лучший драм кит в мире</h3>
+                </div>
+            </div>
+            
+            <div class="main-service">
+                <div class="main-service-item">
+                    <div class="main-service-icon">✨</div>
+                    <h3>Заказ битов / сведения</h3>
+                    <p>Профессиональное производство и мастеринг треков</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://www.youtube.com/@EmerBeats" class="social-link youtube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://t.me/emerbeats_exe" class="social-link telegram">
+                <i class="fab fa-telegram"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 40;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 4 + 1;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}vw`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                particlesContainer.appendChild(particle);
+            }
+
+            const videoContainer = document.querySelector('.video-container');
+            const videoOverlay = document.querySelector('.video-overlay');
+            
+            videoContainer.addEventListener('mouseenter', function() {
+                videoOverlay.style.opacity = '1';
+            });
+            
+            videoContainer.addEventListener('mouseleave', function() {
+                videoOverlay.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>
