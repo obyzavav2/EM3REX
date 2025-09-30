@@ -96,6 +96,14 @@
             margin-bottom: 2rem;
         }
 
+        /* Центрированная кнопка Telegram */
+        .telegram-button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
         .telegram-link {
             display: inline-block;
             background: transparent;
@@ -105,7 +113,6 @@
             border-radius: 0;
             font-weight: 600;
             font-size: 1.2rem;
-            margin-bottom: 2rem;
             position: relative;
             overflow: hidden;
             border: 2px solid white;
@@ -138,7 +145,8 @@
                 inset 0 0 10px rgba(0, 0, 0, 0.3);
             transform: translateY(-5px);
         }
- 
+
+        /* Блок с YouTube видео */
         .youtube-section {
             width: 100%;
             margin-bottom: 3rem;
@@ -199,37 +207,6 @@
             height: 100%;
         }
 
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 2;
-        }
-
-        .video-container:hover .video-overlay {
-            opacity: 1;
-        }
-
-        .play-icon {
-            font-size: 4rem;
-            color: white;
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
         .bot-info {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -243,6 +220,14 @@
             animation: fadeIn 1.5s ease-out;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .bot-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .bot-info::before {
@@ -273,6 +258,7 @@
             font-size: 1.3rem;
             letter-spacing: 1px;
             animation: pulse 2s infinite;
+            text-decoration: none;
         }
 
         @keyframes fadeIn {
@@ -348,6 +334,7 @@
         .service-item:nth-child(2) { animation-delay: 0.4s; }
         .service-item:nth-child(3) { animation-delay: 0.6s; }
 
+        /* ОТДЕЛЬНЫЙ БЛОК ДЛЯ УСЛУГИ "ЗАКАЗ БИТОВ / СВЕДЕНИЯ" */
         .main-service {
             width: 100%;
             max-width: 600px;
@@ -430,6 +417,211 @@
             100% { transform: rotate(0deg) scale(1); }
         }
 
+        /* Стили для вкладок */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .tab-button:hover::before {
+            left: 100%;
+        }
+
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .tab-button.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-content {
+            width: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Стили для контента плагинов */
+        .plugins-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease;
+        }
+
+        .plugin-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .plugin-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateX(10px);
+        }
+
+        .plugin-icon {
+            font-size: 2.5rem;
+            animation: bounce 3s infinite;
+        }
+
+        .plugin-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .plugin-info p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .plugin-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .plugin-link:hover {
+            background: white;
+            color: black;
+        }
+
+        .drumkit-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            margin: 1rem auto;
+            display: block;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .drumkit-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .drumkit-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Счетчик подписчиков YouTube */
+        .youtube-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: pulse 3s infinite;
+        }
+
+        .youtube-stats i {
+            font-size: 2.5rem;
+            color: #ff0000;
+        }
+
+        .subscriber-count {
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .subscriber-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
         .social-links {
             display: flex;
             justify-content: center;
@@ -499,6 +691,7 @@
         .social-link:nth-child(1) { animation-delay: 1s; }
         .social-link:nth-child(2) { animation-delay: 1.2s; }
 
+        /* Анимация частиц */
         .particles {
             position: fixed;
             top: 0;
@@ -533,6 +726,7 @@
             }
         }
 
+        /* Адаптивность */
         @media (max-width: 768px) {
             .logo h1 {
                 font-size: 3.5rem;
@@ -561,6 +755,26 @@
             .main-service-item h3 {
                 font-size: 1.5rem;
             }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-button {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .plugin-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .youtube-stats {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -586,6 +800,14 @@
             .main-service-item {
                 padding: 1.5rem 1rem;
             }
+            
+            .plugins-content {
+                padding: 1.5rem;
+            }
+            
+            .subscriber-count {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -597,61 +819,202 @@
             <h1>EM3REX</h1>
         </div>
         
+        <div class="tabs">
+            <button class="tab-button active" data-tab="main">Главная</button>
+            <button class="tab-button" data-tab="plugins">Плагины</button>
+            <button class="tab-button" data-tab="drumkit">RARE GOODS</button>
+        </div>
+        
         <div class="content">
-            <a href="https://t.me/emerbeats_exe" class="telegram-link" target="_blank">
-                Перейти в Telegram канал
-            </a>
-            
-            <div class="youtube-section">
-                <h2>Последнее видео</h2>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/8qOOEt0Q-oQ" 
-                            title="EM3REX YouTube Video" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                    <div class="video-overlay">
-                        <div class="play-icon">
-                            <i class="fas fa-play"></i>
+            <div class="tab-content">
+                <div class="tab-pane active" id="main-tab">
+                    <div class="telegram-button-container">
+                        <a href="https://t.me/emerbeats_exe" class="telegram-link" target="_blank">
+                            Перейти в Telegram канал
+                        </a>
+                    </div>
+                    
+                    <div class="youtube-section">
+                        <h2>Последнее видео</h2>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/8qOOEt0Q-oQ" 
+                                    title="EM3REX YouTube Video" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="youtube-stats">
+                        <i class="fab fa-youtube"></i>
+                        <div>
+                            <div class="subscriber-count">1.2K+</div>
+                            <div class="subscriber-label">подписчиков</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bot-info" onclick="window.open('https://t.me/EmerBeatsBot', '_blank')">
+                        <p>Бот с предложкой / услуги:</p>
+                        <p class="bot-username">@EmerBeatsBot</p>
+                    </div>
+                    
+                    <div class="services">
+                        <div class="service-item">
+                            <div class="service-icon">🎁</div>
+                            <h3>Скачать плагины</h3>
+                        </div>
+                        
+                        <div class="service-item">
+                            <div class="service-icon">🔥</div>
+                            <h3>Предложка мемов для канала</h3>
+                        </div>
+                        
+                        <div class="service-item">
+                            <div class="service-icon">🍒</div>
+                            <h3>Лучший драм кит в мире</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="main-service">
+                        <div class="main-service-item">
+                            <div class="main-service-icon">✨</div>
+                            <h3>Заказ битов / сведения</h3>
+                            <p>Профессиональное производство и мастеринг треков</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="bot-info">
-                <p>Бот с предложкой / услуги:</p>
-                <p class="bot-username">Bot@EmerBeatsBot</p>
-            </div>
-            
-            <div class="services">
-                <div class="service-item">
-                    <div class="service-icon">🎁</div>
-                    <h3>Скачать плагины</h3>
+                
+                <div class="tab-pane" id="plugins-tab">
+                    <div class="plugins-content">
+                        <h2 style="text-align: center; margin-bottom: 2rem;">Плагины и ресурсы</h2>
+                        
+                        <div class="plugin-item">
+                            <div class="plugin-icon">🎛️</div>
+                            <div class="plugin-info">
+                                <h3>RARE GOODS Drum Kit</h3>
+                                <p>Новый драм-кит, созданный совместно с Kr2n</p>
+                                <p>Только самый отборный сок и лучшие звуки</p>
+                                <a href="https://t.me/emerbeats_exe/514" class="plugin-link" target="_blank">
+                                    Открыть в Telegram
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="plugin-item">
+                            <div class="plugin-icon">🎵</div>
+                            <div class="plugin-info">
+                                <h3>Бесплатные VST плагины</h3>
+                                <p>Коллекция лучших бесплатных VST плагинов для производства музыки</p>
+                                <a href="https://t.me/emerbeats_exe" class="plugin-link" target="_blank">
+                                    Скачать в Telegram
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="plugin-item">
+                            <div class="plugin-icon">🎧</div>
+                            <div class="plugin-info">
+                                <h3>Сэмплы и лупы</h3>
+                                <p>Эксклюзивные сэмплы и лупы для ваших треков</p>
+                                <a href="https://t.me/emerbeats_exe" class="plugin-link" target="_blank">
+                                    Получить доступ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="service-item">
-                    <div class="service-icon">🔥</div>
-                    <h3>Предложка мемов для канала</h3>
-                </div>
-                
-                <div class="service-item">
-                    <div class="service-icon">🍒</div>
-                    <h3>Лучший драм кит в мире</h3>
-                </div>
-            </div>
-            
-            <div class="main-service">
-                <div class="main-service-item">
-                    <div class="main-service-icon">✨</div>
-                    <h3>Заказ битов / сведения</h3>
-                    <p>Профессиональное производство и мастеринг треков</p>
+                <div class="tab-pane" id="drumkit-tab">
+                    <div class="plugins-content">
+                        <h2 style="text-align: center; margin-bottom: 1rem;">ＲＡＲＥ ＧＯＯＤＳ</h2>
+                        <p style="text-align: center; margin-bottom: 2rem; font-style: italic; opacity: 0.9;">
+                            Новый драм-кит который я делал совместно со своим другом, только самый отборный сок и лучшие звуки.
+                        </p>
+                        
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <strong>Авторы:</strong> Emerbeats & Kr2n
+                        </div>
+                        
+                        <img src="https://i.postimg.cc/zBv49ymK/2025-09-30-173032524.png" alt="RARE GOODS Drum Kit" class="drumkit-image">
+                        
+                        <h3 style="text-align: center; margin: 2rem 0 1rem;">Что внутри:</h3>
+                        
+                        <div class="drumkit-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">77</div>
+                                <div class="stat-label">BASS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">27</div>
+                                <div class="stat-label">CLAPS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">18</div>
+                                <div class="stat-label">CRASHES</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">75</div>
+                                <div class="stat-label">FX</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">38</div>
+                                <div class="stat-label">HI HATS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">25</div>
+                                <div class="stat-label">OPEN HATS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">35</div>
+                                <div class="stat-label">KICK</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">21</div>
+                                <div class="stat-label">LOOPS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">40</div>
+                                <div class="stat-label">MIDI</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">24</div>
+                                <div class="stat-label">MUSICAL SCALES</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">48</div>
+                                <div class="stat-label">PERCS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">48</div>
+                                <div class="stat-label">SNARE</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">34</div>
+                                <div class="stat-label">TEXTURE</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">13</div>
+                                <div class="stat-label">VOCAL PRESETS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">46</div>
+                                <div class="stat-label">VOX</div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <a href="https://drive.google.com/file/d/1-PNZjjadQixh1wFsNRh87mE24d2O8G3L/view" class="telegram-link" target="_blank" style="display: inline-block;">
+                                📥 Скачать драм-кит через Google Drive
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
         <div class="social-links">
-            <a href="https://www.youtube.com/@EmerBeats" class="social-link youtube">
+            <a href="https://www.youtube.com/channel/UCIZn38-OCjtZTWnX3k1Odaw" class="social-link youtube">
                 <i class="fab fa-youtube"></i>
             </a>
             <a href="https://t.me/emerbeats_exe" class="social-link telegram">
@@ -684,15 +1047,23 @@
                 particlesContainer.appendChild(particle);
             }
 
-            const videoContainer = document.querySelector('.video-container');
-            const videoOverlay = document.querySelector('.video-overlay');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
             
-            videoContainer.addEventListener('mouseenter', function() {
-                videoOverlay.style.opacity = '1';
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
             });
-            
-            videoContainer.addEventListener('mouseleave', function() {
-                videoOverlay.style.opacity = '0';
+
+            document.querySelector('.bot-info').addEventListener('click', function() {
+                window.open('https://t.me/EmerBeatsBot', '_blank');
             });
         });
     </script>
